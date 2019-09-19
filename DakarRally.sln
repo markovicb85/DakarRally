@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DakarRally", "DakarRally\DakarRally.csproj", "{0F4FB07A-1C0C-4574-B478-65E79A42B638}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DakarRallyDataAccess", "DakarRallyDataAccess\DakarRallyDataAccess.csproj", "{EDEF86AF-2F19-4474-A732-384A3882BB6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DakarRallyShared", "DakarRallyShared\DakarRallyShared.csproj", "{6CCFFDB0-9DB6-4E50-B8DB-86654918D325}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0F4FB07A-1C0C-4574-B478-65E79A42B638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4FB07A-1C0C-4574-B478-65E79A42B638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4FB07A-1C0C-4574-B478-65E79A42B638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDEF86AF-2F19-4474-A732-384A3882BB6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEF86AF-2F19-4474-A732-384A3882BB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEF86AF-2F19-4474-A732-384A3882BB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEF86AF-2F19-4474-A732-384A3882BB6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCFFDB0-9DB6-4E50-B8DB-86654918D325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCFFDB0-9DB6-4E50-B8DB-86654918D325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCFFDB0-9DB6-4E50-B8DB-86654918D325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCFFDB0-9DB6-4E50-B8DB-86654918D325}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
