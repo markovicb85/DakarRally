@@ -40,10 +40,9 @@ namespace DakarRally.Controllers
         //5. Start the race(parameters: race identifier)
         [Route("api/Race/StartRace/{id:int}")]
         [HttpGet]
-        public string StartRace(int id)
+        public async void StartRace(int id)
         {
-            
-            return "Race " +id.ToString() + " is started successfully" ;
+            await RaceDataLayer.StartRaceAsync(id);            
         }
 
         //6. Get leaderboard including all vehicles

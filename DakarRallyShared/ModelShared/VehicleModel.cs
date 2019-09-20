@@ -15,19 +15,19 @@ namespace DakarRallyShared.ModelShared
         private int speed;
         private int lightMalfun;
         private int heavyMalfun;
+        private int malfunctionTime;
         private int raceId;
 
         private int distance;
-        private int malfuctionStatus;
-        private int raceStatus;
-        private int time;
+        private int vehicleStatus = 0;
+        private string time;
 
         public VehicleModel()
         {
         }
 
         public VehicleModel(int id, string teamName, string model, string manufacturingDate, int speed, int lightMalfun, 
-                                int heavyMulfun, int raceId, int distance, int malfuctionStatus, int raceStatus, int time)
+                                int heavyMulfun, int malfunctionTime, int raceId, int distance, int vehicleStatus, int raceStatus, string time)
         {
             this.VehicleId = vehicleId;
             this.TeamName = teamName;
@@ -36,10 +36,10 @@ namespace DakarRallyShared.ModelShared
             this.Speed = speed;
             this.LightMalFun = lightMalfun;
             this.HeavyMalFun = heavyMulfun;
+            this.MalfunctionTime = malfunctionTime;
             this.RaceId = raceId;
             this.Distance = distance;
-            this.MalfuctionStatus = malfuctionStatus;
-            this.RaceStatus = raceStatus;
+            this.VehicleStatus = vehicleStatus;
             this.Time = time;
         }
 
@@ -50,10 +50,10 @@ namespace DakarRallyShared.ModelShared
         public int Speed { get => speed; set => speed = value; }
         public int LightMalFun { get => lightMalfun; set => lightMalfun = value; }
         public int HeavyMalFun { get => heavyMalfun; set => heavyMalfun = value; }
+        public int MalfunctionTime { get => malfunctionTime; set => malfunctionTime = value; }
         public int RaceId { get => raceId; set => raceId = value; }
         public int Distance { get => distance; set => distance = value; }
-        public int MalfuctionStatus { get => malfuctionStatus; set => malfuctionStatus = value; }
-        public int RaceStatus { get => raceStatus; set => raceStatus = value; }
-        public int Time { get => time; set => time = value; }
+        public int VehicleStatus { get => vehicleStatus; set => vehicleStatus = value; }
+        public string Time { get => time; set => time = value; }                
     }
 }

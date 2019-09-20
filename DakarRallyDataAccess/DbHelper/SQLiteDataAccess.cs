@@ -56,10 +56,11 @@ namespace DakarRallyDataAccess
                                             Speed INTEGER,
                                             LightMalFun INTEGER,
                                             HeavyMalFun INTEGER,
-                                            RaceId INTEGER,
-                                            RaceStatus INTEGER,
-                                            Distance INTEGER,
+                                            MalfunctionTime INTEGER,
                                             MalFunctionStatus INTEGER,
+                                            RaceId INTEGER,
+                                            Distance INTEGER,
+                                            VehicleStatus INTEGER,
                                             Time INTEGER
                                         )";
                     cmd.ExecuteNonQuery();
@@ -78,6 +79,8 @@ namespace DakarRallyDataAccess
                                         )";
                     cmd.ExecuteNonQuery();
                 }
+
+                //TODO Table for vehicles properties (speed, malfunctions...)
             }
         }
 

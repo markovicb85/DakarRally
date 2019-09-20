@@ -14,6 +14,7 @@ namespace DakarRallyDataAccess.DataLayer
     {
         private static string sql;
 
+#region VehicleController Method
         public static List<VehicleModel> GetAllVehicles()
         {
             using (IDbConnection con = new SQLiteConnection(SQLiteDataAccess.GetConnectionString()))
@@ -29,22 +30,32 @@ namespace DakarRallyDataAccess.DataLayer
             using (IDbConnection con = new SQLiteConnection(SQLiteDataAccess.GetConnectionString()))
             {
                 SQLiteDataAccess.InstanceDB();
+                con.Open();
 
-                sql = @"update vehicletable
-                        set TeamName = @TeamName,
-                        Model = @Model,
-                        ManufacturingDate = @ManufacturingDate, 
-                        Speed = @Speed, 
-                        LightMalFun = @LightMalFun, 
-                        HeavyMalFun = @HeavyMalFun, 
-                        RaceId = @RaceId
-                        where VehicleId = @VehicleId";
-                con.Execute(sql, vehicle);
+                using (IDbTransaction tran = con.BeginTransaction())
+                {                
+                    sql = @"UPDATE vehicletable
+                            SET TeamName = @TeamName,
+                            Model = @Model,
+                            ManufacturingDate = @ManufacturingDate, 
+                            Speed = @Speed, 
+                            LightMalFun = @LightMalFun, 
+                            HeavyMalFun = @HeavyMalFun,
+                            MalfunctionTime = @MalfunctionTime,
+                            RaceId = @RaceId,
+                            Distance = @Distance,
+                            VehicleStatus = @VehicleStatus,
+                            Time = @Time
+                            WHERE VehicleId = @VehicleId";
+                    con.Execute(sql, vehicle);
 
-                return con.Query<VehicleModel>("SELECT * FROM vehicletable").LastOrDefault();
+                    tran.Commit();
+                    return con.Query<VehicleModel>("SELECT * FROM vehicletable").LastOrDefault();
+                }
             }
 
         }
+#endregion VehicleController Method
 
     }
 }
