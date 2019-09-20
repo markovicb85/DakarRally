@@ -52,6 +52,7 @@ namespace DakarRallyDataAccess
                                             VehicleId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
                                             TeamName TEXT,
                                             Model TEXT,
+                                            Type INTEGER,
                                             ManufacturingDate TEXT,
                                             Speed INTEGER,
                                             LightMalFun INTEGER,

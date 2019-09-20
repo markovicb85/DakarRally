@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="ModelShared\LeaderboardModel.cs" />
+    <Compile Include="ModelShared\RaceStatisticModel.cs" />
     <Compile Include="ModelShared\VehicleModel.cs" />
+    <Compile Include="ModelShared\VehicleStatisticModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModelShared\RaceModel.cs" />
   </ItemGroup>

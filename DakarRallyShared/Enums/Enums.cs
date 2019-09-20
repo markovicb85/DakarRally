@@ -25,11 +25,9 @@ namespace DakarRallyShared.Enums
 
         public enum VehicleType
         {
-            sportsCar = 1,
-            terrainCar = 2,
-            sportMotorcycle = 3,
-            crossMotorcycle = 4,
-            truck = 5
+            motorcycle = 1,
+            car = 2,
+            truck = 3
         }
     }
 }

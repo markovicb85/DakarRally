@@ -41,8 +41,8 @@ namespace DakarRallyDataAccess.DataLayer
 
                 //TODO Check if race exist and get RaceId, if not show the message 
 
-                sql = @"INSERT INTO vehicletable(TeamName, Model, ManufacturingDate, Speed, LightMalFun, HeavyMalFun, MalfunctionTime, RaceId, Distance, VehicleStatus, Time) 
-                        VALUES(@TeamName, @Model, @ManufacturingDate, @Speed, @LightMalFun, @HeavyMalFun, @MalfunctionTime, @RaceId, @Distance, @VehicleStatus, @Time)";
+                sql = @"INSERT INTO vehicletable(TeamName, Model, Type, ManufacturingDate, Speed, LightMalFun, HeavyMalFun, MalfunctionTime, RaceId, Distance, VehicleStatus, Time) 
+                        VALUES(@TeamName, @Model, @Type, @ManufacturingDate, @Speed, @LightMalFun, @HeavyMalFun, @MalfunctionTime, @RaceId, @Distance, @VehicleStatus, @Time)";
                 con.Execute(sql, vehicle);
 
                 return con.Query<VehicleModel>("SELECT * FROM vehicletable").LastOrDefault();
@@ -62,6 +62,32 @@ namespace DakarRallyDataAccess.DataLayer
 
         }
 
+        public static RaceStatisticModel GetRaceStatus(int raceId)
+        {
+            RaceModel race;
+            RaceStatisticModel result = new RaceStatisticModel();
+            List<VehicleModel> allVehicles;
+             
+            using (IDbConnection con = new SQLiteConnection(SQLiteDataAccess.GetConnectionString()))
+            {
+                SQLiteDataAccess.InstanceDB();
+
+                sql = @"SELECT FROM racetable WHERE RaceId = @RaceId";
+                race = con.Query<RaceModel>("SELECT * FROM racetable").LastOrDefault(r => r.RaceID == raceId);
+                allVehicles = con.Query<VehicleModel>("SELECT * FROM vehicletable").ToList();
+            }
+
+            result.RaceStatus = race.RaceStatus;
+            result.MotorcycleNum = allVehicles.Count(v => v.Type == (int)Enums.VehicleType.motorcycle);
+            result.CarNum = allVehicles.Count(v => v.Type == (int)Enums.VehicleType.car);
+            result.TruckNum= allVehicles.Count(v => v.Type == (int)Enums.VehicleType.truck);
+
+            result.StatusPendingNum = allVehicles.Count(v => v.VehicleStatus == (int)Enums.RaceStatus.pending);
+            result.StatusRunningNum = allVehicles.Count(v => v.VehicleStatus == (int)Enums.RaceStatus.running);
+            result.StatusFinishedNum = allVehicles.Count(v => v.VehicleStatus == (int)Enums.RaceStatus.finished);
+
+            return result; 
+        }
 
     #endregion RaceController Method
 
@@ -147,7 +173,7 @@ namespace DakarRallyDataAccess.DataLayer
         }
         #endregion Race simulations
 
-
+    #region Additional methods
         private static RaceModel UpdateRace(RaceModel race)
         {
             using (IDbConnection con = new SQLiteConnection(SQLiteDataAccess.GetConnectionString()))
@@ -179,6 +205,8 @@ namespace DakarRallyDataAccess.DataLayer
             }
 
         }
+
+    #endregion
 
     }
 }
