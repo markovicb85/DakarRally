@@ -99,6 +99,9 @@ namespace DakarRallyDataAccess.DataLayer
             var race = GetRace(id);
             race.RaceStatus = (int)Enums.RaceStatus.running;
             UpdateRace(race);
+
+            //Update all vehicle status to 0 
+            VehicleDataLayer.UpdateVehicleStatus();
             
             List<VehicleModel> allVehicle = VehicleDataLayer.GetAllVehicles();
             List<Task<VehicleModel>> tasks = new List<Task<VehicleModel>>(); 

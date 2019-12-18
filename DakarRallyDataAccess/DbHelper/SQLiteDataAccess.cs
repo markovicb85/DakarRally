@@ -13,6 +13,7 @@ namespace DakarRallyDataAccess
     public class SQLiteDataAccess
     {
         private static SQLiteDataAccess instance;
+        private static readonly object Instancelock = new object();
 
         protected SQLiteDataAccess()
         {
@@ -21,9 +22,15 @@ namespace DakarRallyDataAccess
 
         public static SQLiteDataAccess InstanceDB()
         {
-            if(instance == null)
+            if (instance == null)
             {
-                instance = new SQLiteDataAccess();
+                lock (Instancelock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new SQLiteDataAccess();
+                    }
+                }
             }
             return instance;
         }

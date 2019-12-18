@@ -113,6 +113,18 @@ namespace DakarRallyDataAccess.DataLayer
 
         }
 
+        public static void UpdateVehicleStatus()
+        {
+            using (IDbConnection con = new SQLiteConnection(SQLiteDataAccess.GetConnectionString()))
+            {
+                SQLiteDataAccess.InstanceDB();
+
+                VehicleStatisticModel vehicleStat = new VehicleStatisticModel();
+                con.Query<VehicleModel>("UPDATE vehicletable SET VehicleStatus = 0");       
+            }
+
+        }
+
         public static List<VehicleModel> GetFilteredVehicles(string team, int? status,  int? distance, string Models = "", string date = "")
         {
             using (IDbConnection con = new SQLiteConnection(SQLiteDataAccess.GetConnectionString()))
